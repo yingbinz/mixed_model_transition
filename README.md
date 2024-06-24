@@ -1,0 +1,1 @@
+The .R file contains code for preprocessing the example dataset, conducting conditional and marginal transition analyses using the logistic mixed model, conducting prediction with 10-folds CV, examining the influence of external factor on transitions, comparing the transition strength under different reference transitions.
