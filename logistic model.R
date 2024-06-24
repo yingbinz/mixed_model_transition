@@ -299,14 +299,14 @@ three_df <- base_df %>%
   dplyr::select(-Conditional, -Given, -Target) %>% 
   left_join(prior_knowledge, by = 'studentid')
 
-## estimating the marginal transition strengths, i.e., the model with only given states as predictors
+## estimating the transition strength without pripr knowledge
 engagement_marginal_conditional <- glmer(
   t_engagement ~ +c_engagement + c_confus + c_frustration+g_engagement + g_confus + (1 | studentid), 
   data = three_df, 
   family = binomial, 
   control = glmerControl(optimizer ="Nelder_Mead"))
 
-## adding conditional states to the model to estimate the conditional transition strengths
+## adding pripr knowledge to the model 
 engagement_marginal_conditional_with_prior_knowledge <- update(engagement_marginal_conditional, 
                                           .~.+prior_knowledge + prior_knowledge*g_confus)
 
